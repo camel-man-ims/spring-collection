@@ -35,6 +35,7 @@ public class FormItemController {
 
     @ModelAttribute("itemTypes")
     public ItemType[] itemTypes() {
+        // 해당 클래스 안에 있는 값들을 enum으로 넘겨준다.
         return ItemType.values();
     }
 
