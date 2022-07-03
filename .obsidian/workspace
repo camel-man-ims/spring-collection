@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "764c6ee1ab1d4acf",
+    "type": "split",
+    "children": [
+      {
+        "id": "093177121ed72c36",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "readme.MD",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3234792680210419",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c236de1165e75e1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f6fe46dd716af9dc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "9d74ee54f771a17f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d8c26422b568597c",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe189ccc5beee220",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "67d7b6813a0d5779",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "readme.MD",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "093177121ed72c36",
+  "lastOpenFiles": [
+    "readme.MD",
+    "mvc_advanced/advanced/섹션별readme모음/섹션1-예제만들기-로그 추적기.md",
+    "mvc_advanced/advanced/readme.MD"
+  ]
+}
