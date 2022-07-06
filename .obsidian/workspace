@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "readme.MD",
+            "file": "Untitled.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "readme.MD",
+                "file": "Untitled.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,7 +89,10 @@
   },
   "active": "093177121ed72c36",
   "lastOpenFiles": [
+    "Untitled.md",
     "readme.MD",
+    "mvctwo_lecture/readme.MD",
+    "mvctwo_lecture/validation/readme.MD",
     "mvc_advanced/advanced/섹션별readme모음/섹션1-예제만들기-로그 추적기.md",
     "mvc_advanced/advanced/readme.MD"
   ]
