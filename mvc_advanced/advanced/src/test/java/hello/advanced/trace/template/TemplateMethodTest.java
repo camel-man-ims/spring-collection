@@ -45,6 +45,7 @@ public class TemplateMethodTest {
                 log.info("비지니스 로직1 실행");
             }
         };
+        System.out.println(template1.getClass());
         template1.execute();
     }
 }
