@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "093177121ed72c36",
+        "id": "454771208405de57",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Untitled.md",
-            "mode": "source",
+            "file": "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
+            "mode": "preview",
             "source": false
           }
         }
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 286
   },
   "right": {
     "id": "d8c26422b568597c",
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,13 +87,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "093177121ed72c36",
+  "active": "454771208405de57",
   "lastOpenFiles": [
-    "Untitled.md",
-    "readme.MD",
-    "mvctwo_lecture/readme.MD",
-    "mvctwo_lecture/validation/readme.MD",
+    "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
+    "mvc_advanced/advanced/readme.MD",
     "mvc_advanced/advanced/섹션별readme모음/섹션1-예제만들기-로그 추적기.md",
-    "mvc_advanced/advanced/readme.MD"
+    "readme.MD",
+    "개념/readme.MD",
+    "mvc_advanced/advanced/섹션별readme모음/섹션2-쓰레드로컬.md",
+    "mvctwo_lecture/form/readme.MD",
+    "mvctwo_lecture/readme.MD",
+    "Untitled.md",
+    "mvctwo_lecture/validation/readme.MD"
   ]
 }

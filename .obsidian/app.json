@@ -3,5 +3,6 @@
   "livePreview": true,
   "useMarkdownLinks": true,
   "autoPairBrackets": true,
-  "autoPairMarkdown": false
+  "autoPairMarkdown": false,
+  "defaultViewMode": "preview"
 }
