@@ -127,6 +127,10 @@ MemberRepository m = new JdbcRepository();
     * 예를 들어, 패달을 밟을 때 앞으로 나가게 설계를 했는데, 하위 타입에서 -10이 되게 동작을 하게 한다면 이는 LSP 위반이다.
     * 느리더라도 앞으로 나가면 LSP를 지킨것이다.
   * [직사각형<- 정사각형 ===> 사각형 <- 정사각형, 직사각형](https://blog.itcode.dev/posts/2021/08/15/liskov-subsitution-principle)
+    * 직사각형을 정사각형이 상속받는다.
+      * 정사각형에서는 `height*height`으로 넓이를 구한다.
+      * 직사각형을 정사각형으로 대치하면 다른 값이 나온다.
+    * 위 링크처럼 직사각형에 의존하던 정사각형에서 발생하던 문제가 사각형이라는 인터페이스를 만들어줌으로써 해결된다.
 
 * ISP ( Interface Segregation Principle)
   * 인터페이스 여러개가 범용 인터페이스 하나보다 낫다.
