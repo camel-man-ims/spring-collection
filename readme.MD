@@ -5,5 +5,5 @@
 ## 김영한 강사님 강좌 모음
 
 * [스프링 기본편 강좌](./mvc_basic/readme.md)
-* [MVC2 강좌](./mvctwo_lecture/readme.MD)
-* [스프링 핵심원리 고급편 강좌](./mvc_advanced/readme.MD)
+* [MVC2 강좌](./mvctwo_lecture/readme.md)
+* [스프링 핵심원리 고급편 강좌](./mvc_advanced/readme.md)
