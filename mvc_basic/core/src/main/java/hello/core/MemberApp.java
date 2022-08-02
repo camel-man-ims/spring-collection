@@ -1,17 +1,16 @@
 package hello.core;
 
 import hello.core.member.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
-        Member memberA = new Member(1L, "memberA", Grade.VIP);
-        memberService.join(memberA);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
 
-        Member findMember = memberService.findMember(1L);
-        System.out.println("memberA = " + memberA);
-        System.out.println("findMember = " + findMember);
-        System.out.println(findMember == memberA);
+        memberService.join(new Member(1L,"memberA",Grade.BASIC));
+        Member member = memberService.findMember(1L);
+        System.out.println(member);
     }
 }
 
