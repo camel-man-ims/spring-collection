@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
+            "file": "mvc_basic/섹션별readme모음/섹션3-SpringBean&SpringContainer.md",
             "mode": "preview",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
+                "file": "mvc_basic/섹션별readme모음/섹션3-SpringBean&SpringContainer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "454771208405de57",
   "lastOpenFiles": [
+    "mvc_basic/섹션별readme모음/섹션3-SpringBean&SpringContainer.md",
     "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md",
     "mvc_advanced/advanced/readme.MD",
     "mvc_basic/섹션별readme모음/섹션2-예제만들기&객체지향원리적용.md",
@@ -97,7 +98,6 @@
     "mvc_advanced/advanced/섹션별readme모음/섹션1-예제만들기-로그 추적기.md",
     "readme.MD",
     "개념/readme.MD",
-    "mvc_advanced/advanced/섹션별readme모음/섹션2-쓰레드로컬.md",
-    "mvctwo_lecture/form/readme.MD"
+    "mvc_advanced/advanced/섹션별readme모음/섹션2-쓰레드로컬.md"
   ]
 }
