@@ -198,6 +198,10 @@ public MemberRepository memberRepository() {
 
 ### 4-3) 만약 @Configuration -> @Bean으로 바꾸면?
 
+```
+bean.getClass() = class hello.core.AppConfig
+```
+
 * 이렇게 바꾸면 CGLIB기술 없이 그냥 순수한 자바 객체로 스프링 컨테이너에 등록된다.
 * 그리고 애초에 예상했던 결과처럼 memberRepository가 3번 호출되고(총5번 호출), 싱글톤은 보장되지 않는다.
   * 즉, orderSerivceImpl, memberServiceImpl의 memberRepository는 서로 다른 객체이다.
