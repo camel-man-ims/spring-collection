@@ -5,9 +5,11 @@ import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.Getter;
 
 public class OrderServiceImpl implements OrderService{
 
+    @Getter
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
