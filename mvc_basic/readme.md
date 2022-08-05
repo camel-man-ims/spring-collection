@@ -4,3 +4,5 @@
 * [섹션2-IoC Container](./섹션별readme모음/섹션2-예제만들기&객체지향원리적용.md)
 * [섹션3-Spring Bean & Spring Container](./섹션별readme모음/섹션3-SpringBean&SpringContainer.md)
 * [섹션4-Spring Container & @Configuration & CGLIB](./섹션별readme모음/섹션4-SingletonContainer.md)
+* [섹션5-Component Scan](./섹션별readme모음/섹션5-ComponentScan.md)
+  

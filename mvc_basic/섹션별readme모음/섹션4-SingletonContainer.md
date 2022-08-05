@@ -207,3 +207,4 @@ bean.getClass() = class hello.core.AppConfig
   * 즉, orderSerivceImpl, memberServiceImpl의 memberRepository는 서로 다른 객체이다.
 * 덧붙여서, 객체의 주입이 스프링 컨테이너에 의해 되는 것이 아니라, 그냥 개발자가 new 연산자를 통해 주입해준 것이다.
 * 즉, DI가 스프링 컨테이너에 의해 일어나지 않는다.  
+
