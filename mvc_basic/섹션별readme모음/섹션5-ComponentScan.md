@@ -1,6 +1,8 @@
 # @ComponentScan
 
-## 1. ComponentScan 설명
+## 1. ComponentScan
+
+### 1-1) 설명
 
 * @Bean 등록을 일일히 다 해주는 것은 반복이 생겨서 비효율적이고, 누락이 생길 위험이 있다.
 * Spring은 설정 정보가 없어도 자동으로 Spring Bean을 등록하는 ComponentScan기술을 제공한다.
@@ -14,6 +16,42 @@
     * excludeFilter ~
       * 위 처럼 필터를 붙인 이유는 테스트 했을 때의 코드들과 기존의 AppConfig 코드들도 Component의 대상이 되는 것을 방지하기 위함이다.
       * 즉, @Configuration이 붙은 코드들을 제외했다.
+
+### 1-2) Component란?
+
+* @Component
+  * 개발자가 작성한 class를 Spring이 관리하는 Bean으로 등록하는 annotation
+* @Bean
+  * 개발자가 작성한 method를 통해 반환되는 객체를 Spring Container가 관리하는 Bean으로 등록하는 annotation
+
+* AppConfig에서 @Configuration - @Bean등록을 통해 객체 주입을 해준 것을, @ComponentScan - @Component를 통해 자동으로 해준다고 생각하면 될 것 같다.
+  * @Bean을 통해 주입하는 것
+    * 해당 interface에 해당하는 구현객체(구체클래스)
+
+* 아래는 수동등록
+
+```java
+@Configuration
+public class AppConfig {
+    @Bean
+    public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
+        return new MemberServiceImpl(memberRepository());
+    }
+...
+}
+```
+
+* 아래는 자동등록
+
+```java
+@Component
+public class MemberServiceImpl implements MemberService{
+  ...
+}
+```
+
+* @Component 붙은 거를 @ComponentScan을 통해 쫙 긁어온다.
 
 ## 2. ComponentScan의 동작원리
 
@@ -83,3 +121,7 @@
   * `spring.main.allow-bean-definition-overriding=true`
     * 해당 옵션을 주면 수동 빈 등록이 우선권을 갖고 overriding하게 설정할 수 있다.
     * 기본값은 false다.
+
+<hr/>
+
+* [1-2) Component란?](https://galid1.tistory.com/494)
