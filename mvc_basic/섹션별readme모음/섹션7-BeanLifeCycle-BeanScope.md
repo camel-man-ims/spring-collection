@@ -62,6 +62,8 @@ static class LifeCycleConfigV3 {
 > * [테스트 NetWorkClientV4 객체](../core/src/test/java/hello/lifecycle/NetworkClientV4.java)
 > * [테스트 실행](../core/src/test/java/hello/lifecycle/BeanLifeCycleTest.java)
 
+* 해당 방법을 사용하면 된다.
+
 ```java
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
