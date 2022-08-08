@@ -13,6 +13,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Getter
     private final MemberRepository memberRepository;
+    @Getter
     private final DiscountPolicy discountPolicy;
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {

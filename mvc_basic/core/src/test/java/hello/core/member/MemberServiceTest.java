@@ -1,11 +1,12 @@
 package hello.core.member;
 
+import hello.core.discount.RateDiscountPolicy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+    MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository(),new RateDiscountPolicy());
 
     @Test
     void join(){

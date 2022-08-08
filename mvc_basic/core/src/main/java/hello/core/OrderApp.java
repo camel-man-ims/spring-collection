@@ -1,6 +1,7 @@
 package hello.core;
 
 import hello.core.discount.FixDiscountPolicy;
+import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.*;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
@@ -8,7 +9,7 @@ import hello.core.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository(),new RateDiscountPolicy());
         OrderService orderService = new OrderServiceImpl(new MemoryMemberRepository(),new FixDiscountPolicy());
 
         Long memberId = 1L;
