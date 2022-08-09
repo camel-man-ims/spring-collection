@@ -202,7 +202,7 @@ static class ClientBean{
   * Spring vs Java표준이 충돌한다면, 왠만하면 Spring이 제공하는 거를 사용하자.
     * 대부분 Spring이 더 다양한 기능을 제공해준다.
 
-# 5. Web Scope
+## 5. Web Scope
 
 ### 5-1) web scope 란?
 
