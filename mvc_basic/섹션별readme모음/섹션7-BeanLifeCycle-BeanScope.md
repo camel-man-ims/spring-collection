@@ -132,6 +132,8 @@ import javax.annotation.PreDestroy;
 
 > * [싱글톤 - 프로토타입 테스트](../core/src/test/java/hello/scope/SingletonWithPrototype.java)
 
+### 4-1) 문제상황
+
 <img width="493" alt="image" src="https://user-images.githubusercontent.com/51740388/183422449-a6994d96-d853-4a83-b85c-c8ef27c489b3.png">
 
 * prototype bean을 2개 조회해서, addCount()로 1씩 증가한다면 다른 두 객체는 1씩 증가한다.
@@ -142,3 +144,145 @@ import javax.annotation.PreDestroy;
   * 해결 방법 중 하나로 내부에 applicationContext를 생성해서 호출될 때마다 주입을 해주는 방법이 있다.
     * 좋은 방법은 아니라 사용되지 않는다.
 
+### 4-2) ObjectProvider 이용
+
+> * [싱글톤 - 프로토타입 테스트](../core/src/test/java/hello/scope/SingletonWithPrototypeProvider.java)
+
+```java
+static class ClientBean{
+    @Autowired
+    private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+
+    public int logic(){
+        PrototypeBean prototype = prototypeBeanProvider.getObject();
+        prototype.addCount();
+        return prototype.getCount();
+    }
+}
+```
+
+* `ObjectProvider` 의 `getObject()`는 스프링 컨테이너를 통해 해당 bean을 찾아서 반환한다(DL)
+  * 즉, 해당 예제에서 원하는 딱 그 정도의 기능을 제공한다.
+* 별도의 라이브러리는 필요 없으나, 스프링에 의존적이다.
+
+### 4-3) javax.inject.Provider 이용
+
+> * [javax provider 이용](../core/src/test/java/hello/scope/SingletonWithPrototypeJavaxProvider.java)
+> gradle에 implementation 'javax.inject:javax.inject:1' 추가
+
+```java
+static class ClientBean{
+    @Autowired
+    // 이 때의 provider는 [javax.inject.Provider] 여야 한다.
+    private Provider<PrototypeBean> prototypeBeanProvider;
+
+    public int logic(){
+        PrototypeBean prototype = prototypeBeanProvider.get();
+        prototype.addCount();
+        return prototype.getCount();
+    }
+}
+```
+
+### 4-4) 정리
+
+* 대부분 싱글톤으로 문제를 해결할 수 있기 때문에, Prototype빈을 직접 사용할 일은 사실상 없다.
+  * 그러나 Spring의 핵심적인 개념이기 때문에 알아두자.
+
+* javax.Provider , ObjectProvider 중 무엇을 사용해야 할까?
+  * 스프링은 defacto(사실상 표준)이기 때문에, 왠만하면 그냥 Spring이 제공하는 ObjectProvider를 사용하는게 좋다.
+  * Spring vs Java표준이 충돌한다면, 왠만하면 Spring이 제공하는 거를 사용하자.
+    * 대부분 Spring이 더 다양한 기능을 제공해준다.
+
+# 5. Web Scope
+
+### 5-1) web scope 란?
+
+> implementation 'org.springframework.boot:spring-boot-starter-web' 추가
+
+<img width="483" alt="image" src="https://user-images.githubusercontent.com/51740388/183548191-11968cdf-9f01-4296-b35a-6e89e997c6da.png">
+
+* http request에 맞춰서 각각 할당된다.
+* http의 요청이 들어오고 나갈 때까지의 life cycle 동안은 같은 bean이 관리가 된다. 
+
+### 5-2) request scope 목표
+
+* 지금까지는 `AnnotationConfigApplicationContext`를 기반으로 개발했다면,web 에서는 추가적 설정이 필요하기에 `AnnotationConfigServletWebServerApplicationContext` 를 기반으로 구동한다.
+
+```
+[d06b992f...] request scope bean create
+[d06b992f...][http://localhost:8080/log-demo] controller test
+[d06b992f...][http://localhost:8080/log-demo] service id = testId
+[d06b992f...] request scope bean close
+```
+
+* 위와 같이 로그를 찍도록 만들어보자.
+
+### 5-3) request scope
+
+> * [myLogger](../core/src/main/java/hello/core/common/MyLogger.java)
+> * [controller](../core/src/main/java/hello/core/web/LogDemoControllerProblem.java)
+> * [service](../core/src/main/java/hello/core/web/LogDemoService.java)
+
+* 위와 같이 코드를 짜고 실행하면 에러가 발생한다.
+* 그 이유는 `myLogger` bean의 scope가 request인데, 스프링 컨테이너가 뜰 시점에는 request를 주입할 수 없기 때문에 발생하는 문제다.
+  * request는 사용자 요청이 들어오고 나갈때까지인데, 스프링 컨테이너가 뜰 시점에는 사용자 요청이 없으므로 request bean을 생성할 수 없기 때문이다.
+
+```java
+@Scope(value = "request")
+public class MyLogger {
+  ...
+}
+```
+
+* 웹과 관련된 부분은 controller까지만 사용해야 한다.
+  * service계층은 웹 기술에 종속적이지 않게 유지해야 유지보수에 좋다.
+
+### 5-4) Provider를 사용해서 해결
+
+> * [controller](../core/src/main/java/hello/core/web/LogDemoController.java)
+> * [service](../core/src/main/java/hello/core/web/LogDemoService.java)
+
+```java
+private final MyLogger myLogger;
+// -->
+private final ObjectProvider<MyLogger> myLoggerProvider;
+```
+
+* `ObjectProvider<MyLogger>`를 사용하면 MyLogger를 주입받는 게 아니라, MyLogger를 찾을 수 있는(DL) Provider가 주입된다.
+* Service역시 `MyLogger` -> `ObjectProvider<MyLogger>`로 변경해주었다.
+* **ObjectProvider를 사용하면 Spring Container에게 bean을 달라는 요청을 지연할 수 있다.**
+  * 그러면 SpringContainer는 요청 시점에 bean을 생성하게 된다.
+* HTTP 같은 요청이면 같은 SpringBean이 반환된다.
+
+### 5-5) Proxy 이용
+
+> * [myLoggerProxy](../core/src/main/java/hello/core/common/MyLoggerProxy.java)
+
+```java
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class MyLoggerProxy {
+  ...
+}
+```
+
+* proxyMode추가
+  * 클래스면 TARGET_CLASS
+  * 인터페이스면 INTERFACES선택
+
+* 그리고 해당 MyLogger를 찍어보면 CGLIB의 바이트 조작을 통한 가짜 객체가 주입된 것을 확인할 수 있다.
+  * `myLogger = class hello.core.common.MyLogger$$EnhancerBySpringCGLIB$$b68b726d`
+* 가짜 프록시 객체는 요청이 들어오면 그 때 내부에서 진짜 빈을 찾는 **위임**로직이 들어가있다.
+
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/51740388/183552591-6665c349-0193-41d3-aa22-468cd620f6a4.png">
+
+* 다형성
+  * 가짜 프록시 객체는 원본 클래스를 **상속**받아서 만들어졌기 때문에, client 입장에서는 원본인지 아닌지 상관없이 사용할 수 있다.
+
+### 5-6) 정리
+
+* 핵심은 Provider를 사용하든, Proxy를 사용하든 진짜 객체 조회가 필요한 시점까지 지연처리로 조회를 미룬다는 점이다.
+* 해당 annotation 설정 변경만으로 원본 객체를 프록시 객체로 교체할 수 있다.
+  * 다형성, DI container의 위력이다.
+* 웹 scope가 아니더라도 proxy는 사용할 수 있다.
+* aop역시 해당 원리로 돌아간다.

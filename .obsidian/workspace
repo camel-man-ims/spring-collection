@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "mvc_basic/섹션별readme모음/섹션6-의존관계자동주입.md",
+            "file": "mvc_basic/섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md",
             "mode": "preview",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mvc_basic/섹션별readme모음/섹션6-의존관계자동주입.md",
+                "file": "mvc_basic/섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
