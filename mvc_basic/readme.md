@@ -6,5 +6,5 @@
 * [섹션4-Spring Container & @Configuration & CGLIB](./섹션별readme모음/섹션4-SingletonContainer.md)
 * [섹션5-Component Scan](./섹션별readme모음/섹션5-ComponentScan.md)
 * [섹션6-의존관계 자동주입](./섹션별readme모음/섹션6-의존관계자동주입.md)
-* [섹션7-Bean 생명주기 callback](./섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md)
+* [섹션7-Bean LifeCycle & Bean Scope](./섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md)
   
