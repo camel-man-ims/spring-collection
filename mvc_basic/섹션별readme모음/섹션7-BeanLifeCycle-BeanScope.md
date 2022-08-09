@@ -1,4 +1,4 @@
-# 섹션7 - Bean 생명주기, Bean Scope
+# 섹션7 - Bean LifeCycle, Bean Scope
 
 ## 1. Bean Life Cycle 도입
 
