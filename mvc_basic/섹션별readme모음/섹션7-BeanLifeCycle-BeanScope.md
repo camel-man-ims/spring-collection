@@ -5,8 +5,10 @@
 > * [테스트 NetWorkClientV1 객체](../core/src/test/java/hello/lifecycle/NetworkClientV1.java)
 > * [테스트 실행](../core/src/test/java/hello/lifecycle/BeanLifeCycleTest.java)
 
-* 현재 NetWorkClientV1을 실행하면 내부 url은 계속 null이 뜨게 된다.
-* 당연히 생성자 때 null 이었고, 생성자 이후에 값이 바뀌었으므로 null이 뜨는게 당연하다.
+* 문제상황
+  * 현재 NetWorkClientV1을 실행하면 내부 url은 계속 null이 뜨게 된다.
+  * 당연히 생성자 때 null 이었고, 생성자 이후에 값이 바뀌었으므로 null이 뜨는게 당연하다.
+  * 즉, 멤버변수인 URL에 값을 주입해주고 싶다.
 
 * Spring Bean은 아래와 같은 life cycle을 갖는다.
   * 객체 생성
@@ -85,6 +87,8 @@ import javax.annotation.PreDestroy;
 * Scope
   * 빈이 존재할 수 있는 범위
 
+### 3-2) scope!
+
 * Scope
   * Singleton
   * Prototype
@@ -93,31 +97,32 @@ import javax.annotation.PreDestroy;
     * session
     * application
 
-* Scope 설명
-  * Singleton
-    * default scope
-    * 스프링 컨테이너 시작과 종료될 때까지 유지되는 가장 넓은 범위의 scope
-  * Prototype
-    * Prototype bean의 생성과 DI까지만 관여하고 더는 관리하지 않는 매우 짧은 범위의 scope
-  * Web
-    * request
-      * 웹 요청이 들어오고 나갈 때까지
-    * session
-      * web session 생성 ~ 종료될때까지
-    * applcation
-      * web servlet context와 같은 범위로 유지
+### 3-3) scope 설명
 
-### 3-2) Prototype scope
+* Singleton
+  * default scope
+  * 스프링 컨테이너 시작과 종료될 때까지 유지되는 가장 넓은 범위의 scope
+* Prototype
+  * Prototype bean의 생성과 DI까지만 관여하고 더는 관리하지 않는 매우 짧은 범위의 scope
+* Web
+  * request
+    * 웹 요청이 들어오고 나갈 때까지
+  * session
+    * web session 생성 ~ 종료될때까지
+  * applcation
+    * web servlet context와 같은 범위로 유지
+
+### 3-4) Prototype scope
 
 > * [싱글톤 테스트](../core/src/test/java/hello/scope/SingletonTest.java)
 > * [프로토타입 테스트](../core/src/test/java/hello/scope/PrototypeTest.java)
 > * 예제에서, 객체에 @Component를 달지 않아도, 직접 SpringContainer의 argument로 넘기면 알아서 등록이 된다.
 
-* 싱글톤 요청일 때
+#### 싱글톤 요청일 때
 
 <img width="474" alt="2022-08-08_21 20 24" src="https://user-images.githubusercontent.com/51740388/183416617-76bd874e-9965-4de6-ad10-73629935674f.png">
 
-* 프로토타입 요청일 때
+#### 프로토타입 요청일 때
 
 <img width="489" alt="2022-08-08_21 20 38" src="https://user-images.githubusercontent.com/51740388/183416556-b4da588d-cb48-47a0-8348-e0725b05a4af.png">
 
@@ -136,13 +141,16 @@ import javax.annotation.PreDestroy;
 
 <img width="493" alt="image" src="https://user-images.githubusercontent.com/51740388/183422449-a6994d96-d853-4a83-b85c-c8ef27c489b3.png">
 
-* prototype bean을 2개 조회해서, addCount()로 1씩 증가한다면 다른 두 객체는 1씩 증가한다.
-* 그렇다면 만약, Singleton 내부에 prototype bean이 존재하는 경우라면?
-  * 싱글톤의 경우 생성될 때만 객체 주입이 일어나기 때문에, 내부의 prototype bean 역시 변경되지 않는다.
-  * 즉, 최초에 주입된 객체가 끝날 때까지 유지된다.
-* 그래서 Singleton 내부의 prototype bean을 2번 호출하면 각각 새로운 prototype bean을 반환 받을 것을 기대하지만, 실제로는 하나의 prototype bean만을 반환받는다.
-  * 해결 방법 중 하나로 내부에 applicationContext를 생성해서 호출될 때마다 주입을 해주는 방법이 있다.
-    * 좋은 방법은 아니라 사용되지 않는다.
+* signleton 내부 prototype.addCount() -> 각각 1씩 증가 예상
+  * 그러나 총 2반환
+  * prototype bean을 2개 조회해서, addCount()로 1씩 증가한다면 다른 두 객체는 1씩 증가한다.
+  * 그렇다면 만약, Singleton 내부에 prototype bean이 존재하는 경우라면?
+    * 싱글톤의 경우 생성될 때만 객체 주입이 일어나기 때문에, 내부의 prototype bean 역시 변경되지 않는다.
+    * 즉, 최초에 주입된 객체가 끝날 때까지 유지된다.
+  * 그래서 Singleton 내부의 prototype bean을 2번 호출하면 각각 새로운 prototype bean을 반환 받을 것을 기대하지만, 실제로는 하나의 prototype bean만을 반환받는다.
+
+* 해결 방법 중 하나로 내부에 applicationContext를 생성해서 호출될 때마다 주입을 해주는 방법이 있다.
+  * 좋은 방법은 아니라 사용되지 않는다.
 
 ### 4-2) ObjectProvider 이용
 
