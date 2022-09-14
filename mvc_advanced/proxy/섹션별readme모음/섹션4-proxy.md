@@ -173,5 +173,17 @@ ex=java.lang.IllegalStateException: 예외 발생!
 <img width="462" alt="image" src="https://user-images.githubusercontent.com/51740388/190049380-d564d105-2020-4b1e-a071-f706b6b12712.png">
 
 * 코드
-    * [프록시 패턴 코드 폴더](../src/test/java/hello/proxy/code/pureproxy/)
-    * 
+    * [데코레이터 패턴 코드 폴더](../src/test/java/hello/proxy/code/decorator/)
+    * [데코레이터 패턴 핵심 코드(MessageDecorator)](../src/test/java/hello/proxy/code/decorator/MessageDecorator.java)
+    * [데코레이터 패턴 체이닝 : 실행시간 찍기(TimeDecorator)](../src/test/java/hello/proxy/code/decorator/TimeDecorator.java)
+    * [데코레이터 패턴 테스트](../src/test/java/hello/proxy/code/decorator/DecoratorPatternTest.java)
+* 사실 프록시 패턴과 크게 다른 것은 없어 보인다.
+* intent가 다르다는 것에 집중하자.
+* 이 때, chaning이 일어날 수 있다.
+    * `TimeDecorator`를 만들어서, `MessageDecorator` 를 parameter로 받는다.
+    * 그러면 `MessageDecorator`까지 붙여온 기능에 다시 추가적으로 기능을 붙일 수 있다.
+
+<img width="478" alt="image" src="https://user-images.githubusercontent.com/51740388/190052084-2fa4ba0d-ede6-47b4-b730-70051e3d792a.png">
+
+* 추상화
+    * 이 때, 각 데코레이터 패턴마다 생성자와 인터페이스 선언 부분은 중복되기 때문에 추상화해 줄 수 있다.
