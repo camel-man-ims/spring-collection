@@ -21,6 +21,8 @@ public class ProxyApplication {
 
 ### 1-2) 무엇을 할 것인가?: 사전준비
 
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/51740388/190061502-03b5bc71-266c-4ee7-bf88-702cfd1de9e0.png">
+
 * v1
     * 인터페이스와 구현 클래스
         * Spring Bean으로 수동등록
@@ -187,3 +189,49 @@ ex=java.lang.IllegalStateException: 예외 발생!
 
 * 추상화
     * 이 때, 각 데코레이터 패턴마다 생성자와 인터페이스 선언 부분은 중복되기 때문에 추상화해 줄 수 있다.
+
+## 4. v1(interface & class) 프록시 적용
+
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/51740388/190061502-03b5bc71-266c-4ee7-bf88-702cfd1de9e0.png">
+
+<img width="490" alt="image" src="https://user-images.githubusercontent.com/51740388/190061940-a0a8d273-8bc2-4fc0-a0be-4c7de77f5c6a.png">
+
+* 코드
+    * [v1 프록시 적용 폴더](../src/main/java/hello/proxy/config/v1_proxy/interface_proxy/)
+    * [v1 프록시 적용 config](../src/main/java/hello/proxy/config/v1_proxy/InterfaceProxyConfig.java)
+
+* 3-2)의 프록시 패턴 예제처럼, 프록시 객체를 따로 만들어서 proxy객체가 target을 내부적으로 의존하게 설계한다.
+
+<img width="474" alt="image" src="https://user-images.githubusercontent.com/51740388/190092506-22dc76a3-c39b-46ec-8e80-10f12c486b75.png">
+
+* 프록시 적용 이후
+
+<img width="499" alt="image" src="https://user-images.githubusercontent.com/51740388/190092693-1de902f4-3668-478b-b66e-b02b8df6f119.png">
+
+* 빈 객체의 마지막에 `@x0...` 은 인스턴스라는 뜻이다.
+* 이 때, 프록시 객체만 Spring Bean으로 등록되고 실제 객체는 Spring Container에 등록되면 안된다.
+    * 프록시 객체가 언제든 실제 객체를 참조할 수 있는 상황이어야 한다.
+
+* 실행결과
+
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/51740388/190074548-99bff0c2-ce0b-4d8c-b222-de7838a6e310.png">
+
+## 5. v2(class) proxy 적용
+
+* 코드
+    * [concreteProxy폴더](../src/main/java/hello/proxy/config/v1_proxy/concrete_proxy/)
+    * [concreteProxy Config](../src/main/java/hello/proxy/config/v1_proxy/ConcreteProxyConfig.java)
+
+* 인터페이스를 상속하든, 클래스를 상속하든 여튼 상위 타입만 맞으면 다형성이 적용된다.
+    * 즉, 인터페이스가 없어도 프록시가 가능하다.
+* 참고 (super)
+    * 자바는 생상자 명시를 안해주면 기본생성자를 생성해준다.
+    * 이 때, 만약 부모에서 parameter가 있는 생성자를 명시했다면, 자식에서는 super()를 자동으로 호출하는데 이 때 기본 생성자가 존재하지 않으므로 에러가 난다.
+* 클래스 기반 프록시는 인터페이스 기반 프록시보다 단점이 많다.
+    * 부모 생성자를 호출해야 한다.
+    * 클래스에 final 붙으면 상속이 불가능하다.
+    * 메서드에 final 붙으면 overriding 불가능하다.
+* 인터페이스보다 클래스 기반 프록시가 좋은점 하나는 인터페이스는 인터페이스 그 자체가 필요하기 때문에, 그 부분을 상쇄할 수 있다는 점이다.
+* 현재의 코드는 프록시 클래스를 매번 만들어야 하는 단점이 있다.
+* 만약 적용해야 하는 대상 클래스가 100개라면, 프록시 클래스 역시 100개를 만들어야 한다.
+* 이를 해결해 줄 수 있는 기술이 동적 프록시 기술이다.
