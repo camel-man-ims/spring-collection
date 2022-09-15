@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "mvc_advanced/proxy/섹션별readme모음/섹션4-proxy.md",
+            "file": "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
             "mode": "preview",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mvc_advanced/proxy/섹션별readme모음/섹션4-proxy.md",
+                "file": "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +89,7 @@
   },
   "active": "454771208405de57",
   "lastOpenFiles": [
+    "mvc_advanced/proxy/섹션별readme모음/섹션4-proxy.md",
     "mvc_advanced/readme.md",
     "mvc_basic/섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md",
     "mvc_basic/섹션별readme모음/섹션3-SpringBean&SpringContainer.md",
@@ -97,7 +98,6 @@
     "mvc_basic/섹션별readme모음/섹션4-SingletonContainer.md",
     "mvc_basic/섹션별readme모음/섹션5-ComponentScan.md",
     "mvc_basic/섹션별readme모음/섹션6-의존관계자동주입.md",
-    "mvc_basic/readme.md",
-    "mvc_advanced/advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md"
+    "mvc_basic/readme.md"
   ]
 }
