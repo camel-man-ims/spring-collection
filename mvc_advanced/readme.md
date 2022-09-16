@@ -5,3 +5,4 @@
 * [섹션3 - 템플릿 메서드 & 전략 & 콜백 패턴](./advanced/섹션별readme모음/섹션3-템플릿메서드-전략-콜백.md)
 * [섹션4 - proxy](./proxy/섹션별readme모음/섹션4-proxy.md)
 * [섹션5 - 동적proxy](./proxy/섹션별readme모음/섹션5-동적proxy.md)
+* [섹션6 - Spring이 지원하는 프록시](./proxy/섹션별readme모음/섹션6-Spring이지원하는Proxy.md)

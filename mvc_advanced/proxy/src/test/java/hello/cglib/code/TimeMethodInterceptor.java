@@ -3,6 +3,7 @@ package hello.cglib.code;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.lang.reflect.Method;
 
@@ -12,6 +13,7 @@ public class TimeMethodInterceptor implements MethodInterceptor {
     private final Object target;
 
     public TimeMethodInterceptor(Object target) {
+        MultipartFile a;
         this.target = target;
     }
 

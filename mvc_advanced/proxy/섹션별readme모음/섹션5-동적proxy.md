@@ -104,3 +104,10 @@ Object result1 = methodCallA.invoke(target);
 * 동작과정은 잘 이해가 안된다.
 * 그냥 JDP Dynamic Prxoy랑 비슷하게 동작한다라고만 이해하고 넘어가면 될 것 같다.
     * CGLIB을 직접 사용할 일은 (거의) 없다.
+
+## 6. 마무리
+
+* 인터페이스가 있는 경우에는 JDK Dynamic Prxoy, 없는 경우에는 CGLIB을 사용해야 할까?
+* 그렇다면 JDK Dynamic Prxoy가 제공하는 `InvocationHandler`와 , CGLIB이 제공하는 `MethodInterceptor`를 중복으로 사용해서 관리해야 할까?
+* 특정 조건이 맞을 때, 프록시를 알아서 적용해주는 기능이 있으면 좋겠다
+    * Spring이 제공하는 Proxy를 사용하면 해결된다.
