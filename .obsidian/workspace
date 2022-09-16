@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "mvc_advanced/proxy/섹션별readme모음/섹션6-Spring이지원하는Proxy.md",
+            "file": "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
             "mode": "preview",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mvc_advanced/proxy/섹션별readme모음/섹션6-Spring이지원하는Proxy.md",
+                "file": "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "454771208405de57",
   "lastOpenFiles": [
-    "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
     "mvc_advanced/proxy/섹션별readme모음/섹션4-proxy.md",
+    "mvc_advanced/proxy/섹션별readme모음/섹션5-동적proxy.md",
+    "mvc_advanced/proxy/섹션별readme모음/섹션6-Spring이지원하는Proxy.md",
     "mvc_advanced/readme.md",
     "mvc_basic/섹션별readme모음/섹션7-BeanLifeCycle-BeanScope.md",
     "mvc_basic/섹션별readme모음/섹션3-SpringBean&SpringContainer.md",
     "mvc_basic/섹션별readme모음/섹션1-spring탄생.md",
     "mvc_basic/섹션별readme모음/섹션2-예제만들기&객체지향원리적용.md",
     "mvc_basic/섹션별readme모음/섹션4-SingletonContainer.md",
-    "mvc_basic/섹션별readme모음/섹션5-ComponentScan.md",
-    "mvc_basic/섹션별readme모음/섹션6-의존관계자동주입.md"
+    "mvc_basic/섹션별readme모음/섹션5-ComponentScan.md"
   ]
 }

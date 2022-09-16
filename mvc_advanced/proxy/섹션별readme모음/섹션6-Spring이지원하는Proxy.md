@@ -109,3 +109,22 @@
         * 이 때, 가장 최신에 등록된 advisor가 먼저 적용된다.
 * 두번째 방법을 그냥 처음부터 보여주면 되는데, 굳이 처음 방법을 알려준 이유는 AOP 적용 수만큼 프록시가 생성된다고 착각할 수 있기 때문이다. Spring은 AOP를 적용할 때 최적화를 진행해서 지금처럼 Proxy는 하나만 만들고, 하나의 프록시에 여러개의 Advisor를 적용한다.
     * 정리하면 하나의 target에 여러 AOP가 동시에 적용되도, Spring AOP는 target마다 하나의 Proxy만 생성한다.
+
+## 4. v1,v2에 적용하기
+
+* [LogTraceAdvice](../src/main/java/hello/proxy/config/v3_proxyfactory/advice/LogTraceAdvice.java)
+* [ProxyFactoryV1](../src/main/java/hello/proxy/config/v3_proxyfactory/advice/../ProxyFactoryConfigV1.java)
+* [ProxyFactoryV2](../src/main/java/hello/proxy/config/v3_proxyfactory/advice/../ProxyFactoryConfigV2.java)
+* 위의 3까지의 예제코드에 대한 응용이다.
+
+## 5. 마무리
+
+* ProxyFactory를 활용해서 매우 편리하게 Proxy를 생성할 수 있었다.
+    * 추가로 Pointcut, Advisor, Advice 등을 활용해서 역할과 책임도 나눌 수 있었다.
+* 문제들
+    * 1. 너무 많은 설정
+        * 그러나 위의 코드들 역시 부가 기능을 추가하기 위해 너무나 많은 설정을 해주어야 한다.
+        * Spring Bean이 100개라면, 100개에 대해서 모두 동적 프록시 코드를 생성해주어야 한다.
+    * 2. 컴포넌트 스캔
+        * 이미 Bean으로 등록된 객체들에 대해서는 위의 코드로는 Proxy를 등록할 수 없다.
+* 위의 문제들을 해결할 수 있는 해결책이 빈 후처리기이다.
