@@ -7,3 +7,4 @@
 * [섹션5-동적proxy](./proxy/섹션별readme모음/섹션5-동적proxy.md)
 * [섹션6-Spring이 지원하는 프록시](./proxy/섹션별readme모음/섹션6-Spring이지원하는Proxy.md)
 * [섹션7-빈 후처리기](./proxy/섹션별readme모음/섹션7-빈후처리기.md)
+* [섹션8-Spring AOP 개념](./proxy/섹션별readme모음/섹션8-SpringAOP개념.md)
