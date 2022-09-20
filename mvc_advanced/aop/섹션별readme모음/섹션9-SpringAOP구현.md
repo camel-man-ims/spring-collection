@@ -17,7 +17,7 @@ testAnnotationProcessor 'org.projectlombok:lombok'
 
 ## 2. Aspect 버전별 변화
 
-### 2-1) AspectV1: `@Around()`와 `@Aspect()`를 이용해서 AOP를 구현
+### 2-1) AspectV1: @Around()와 @Aspect()를 이용해서 AOP를 구현
 
 * [AspectV1](../src/main/java/hello/aop/order/aop/AspectV1.java)
 * [실행](../src/test/java/hello/aop/AopTest.java)
@@ -33,7 +33,7 @@ testAnnotationProcessor 'org.projectlombok:lombok'
         * 주로 설정 파일을 추가할 때 사용(`@Configuration`)
         * @Configuration이 돼있지 않더라도, 직접 등록이 된다고 생각하면 될 것 같다.
 
-### 2-2) AspectV2: `@Pointcut`을 따로 분리
+### 2-2) AspectV2: @Pointcut을 따로 분리
 
 * [AspectV2](../src/main/java/hello/aop/order/aop/AspectV2.java)
 * [실행](../src/test/java/hello/aop/AopTest.java)
