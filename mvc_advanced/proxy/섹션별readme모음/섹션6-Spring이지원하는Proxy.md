@@ -73,7 +73,7 @@
 
 ### 3-1) 직접 만든 Pointcut
 
-* [직접 만든 Pointcut](../src/test/java/hello/advisor/CustomPointcut.java)
+* [직접 만든 Pointcut](../src/test/java/hello/advisor/CustomPointcutTest.java)
 * Pointcut은 크게 `ClassFilter`와 `MethodMatcher`로 이루어진다.
     * 클래스와 메서드 둘다 맞아야(true를 반환해야) Pointcut을 통과한다.
 * `MyMethodMatcher`
