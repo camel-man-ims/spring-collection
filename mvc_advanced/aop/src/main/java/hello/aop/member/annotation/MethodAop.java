@@ -5,9 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-// class에 붙이는 annotation
-@Target(ElementType.TYPE)
-// runtime = runtime일 때까지 해당 annotation이 살아있는다.
+@Target(ElementType.METHOD)
+// RUNTIME으로 해야 동적으로 소스를 읽을 수 있다.
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ClassAop {
+public @interface MethodAop {
+    String value();
 }
