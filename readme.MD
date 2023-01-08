@@ -7,3 +7,4 @@
 * [스프링 기본편 강좌](./mvc_basic/readme.md)
 * [MVC2 강좌](./mvctwo_lecture/readme.md)
 * [스프링 핵심원리 고급편 강좌](./mvc_advanced/readme.md)
+* [QueryDSL강좌](./querydsl_lecture/readme.md)
